@@ -1,4 +1,4 @@
-# DataStructure
+# DataStructure (C OR C++ CODE ONLY)
 This Repository is created to capture data structure and algorithm design and problem solving
 
 Rules to contribute in open source.
@@ -17,4 +17,6 @@ Auther(I) will merge your PR into master branch.
 Master branch having clean solutions to the problem.
 
 Rules for file naming:
-Please follow the standard file name with complete descriptor or problem
+1. Please follow the standard file name with complete descriptor or problem
+2. Put your file in appropriate  folder so that easy to find solutions.(eg. Tree related folder should contains only solutions to the problems which is solved using tree).
+
