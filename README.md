@@ -1,4 +1,4 @@
-# DataStructure (C OR C++ CODE ONLY)
+# DataStructure (C OR C++ ONLY)
 This Repository is created to capture data structure and algorithm design and problem solving
 
 Rules to contribute in open source.
