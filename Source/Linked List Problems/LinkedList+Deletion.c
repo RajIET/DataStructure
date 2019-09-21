@@ -20,8 +20,9 @@ struct Node{
 
 void printList (Node * head){
     Node *temp = head;
-    while (temp != NULL)
-    {
+    printf("Items in list is ");
+    
+    while (temp != NULL){
         printf ("%d ", temp->data);
         temp = temp->next;
     }
@@ -47,26 +48,26 @@ Node *createLinkedList (int numberOfNodes){
     return head;
 }
 
-int deleteItemFromFirstPosition(Node** head){
-    if (*head == NULL){
-        return INT_MAX;//Assumes INT_MAX is not part of list item.
+Node* deleteItemFromFirstPosition(Node* head){
+    if (head == NULL){
+        return NULL;
     }
     
-    Node *temp = *head;
-    int itemToDelete = temp->data;
-    *head = temp->next;
+    printf("Delete item from list %d\n", head->data);
+    Node *temp = head;
+    head = head->next;
     free(temp);
     
-    return itemToDelete;
+    return head;
 }
 
-int deleteItemAt(int position, Node**head){
+Node* deleteItemAt(int position, Node*head){
     if (head == NULL){
-        return INT_MAX;//Assumes INT_MAX is not part of list item.
+        return head;
     }
     
-    Node *temp = *head;
-    Node *prev = *head;
+    Node *temp = head;
+    Node *prev = head;
     int i = 1;
     while(temp->next != NULL && i < position){
         prev = temp;
@@ -75,53 +76,39 @@ int deleteItemAt(int position, Node**head){
     }
     
     if (i < position){
-        return INT_MAX;
+        return head;
     }
     
     Node *nodeToDelete = temp;
-    int itemToDelete = temp->data;
-    if (nodeToDelete == *head){
-        *head = nodeToDelete->next;
+    printf("Delete item from list = %d\n", temp->data);
+    if (nodeToDelete == head){
+        head = nodeToDelete->next;
     }
     prev->next = temp->next;
     free(nodeToDelete);
     
-    return itemToDelete;
+    return head;
 }
 
-int deleteItemAtLast(Node **head){
-    Node *start = *head;
+Node * deleteItemAtLast(Node *head){
+    Node *start = head;
+    Node * prev = head;
     
-    int itemToDelete = INT_MAX;
-    
-    if (start == NULL){
-        return itemToDelete;
+    while(start->next != NULL){
+        prev = start;
+        start = start->next;
     }
     
-    if (start->next == NULL){
-        itemToDelete = start->data;
-        free(start);
-        *head = NULL;
-        
-        return itemToDelete;
-    }
+    printf("Delete item from list is = %d\n", start->data);
+    prev->next = NULL;
+    free(start);
     
-    Node *temp = *head;
-    while(temp->next != NULL && temp->next->next != NULL){
-        temp = temp->next;
-    }
-    
-    itemToDelete = temp->next->data;
-    free(temp->next);
-    temp->next = NULL;
-    
-    return itemToDelete;
+    return head;
 }
 
 int main (){
     Node *head = createLinkedList (10);
-    printf("Deleted item = %d\n", deleteItemAt(11, &head));
-    
+    head = deleteItemAt(2, head);
     printList(head);
 }
 
